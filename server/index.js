@@ -5,18 +5,17 @@ const massive = require('massive');
 const app = express();
 const cors=require('cors');
 
-//const session = require('express-session');
-//const enterTheMatrix = require('./redPillorBluePill');
+const enterTheMatrix = require('./redPillorBluePill');
 
 app.use(bodyParser.json());
 app.use(cors());
 
-massive( process.env.SWORDFISH_CONN ).then( dbInstance => {
+massive( process.env.CONNECTION_STRING ).then( dbInstance => {
     app.set('db', dbInstance)
 } ).catch(err => console.log(err));
 
-//app.post( '/api/addListing', enterTheMatrix.postNewListing );
-//app.get( '/api/fetchListings', enterTheMatrix.getAllListing );
+app.post( '/api/addListing', enterTheMatrix.postNewListing );
+app.get( '/api/fetchListings', enterTheMatrix.getAllListing );
 // app.put( '/api/updateListing/:id', enterTheMatrix.updateListing );
 // app.delete( '/api/deleteListing/:id',enterTheMatrix.handleDelete );
 
