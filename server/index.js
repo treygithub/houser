@@ -14,6 +14,8 @@ massive( process.env.CONNECTION_STRING ).then( dbInstance => {
     app.set('db', dbInstance)
 } ).catch(err => console.log(err));
 
+//app.use( express.static( `${__dirname}/build` ) );
+
 app.post( '/api/addListing', enterTheMatrix.postNewListing );
 app.get( '/api/fetchListings', enterTheMatrix.getAllListing );
 // app.put( '/api/updateListing/:id', enterTheMatrix.updateListing );

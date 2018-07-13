@@ -37,7 +37,6 @@ class Dashboard extends Component {
     }
     //map over state and pass props to child
     render() {
-      let {handleDeleteProduct} = this.props
       let {listing} = this.state
       let instanceLoop  = listing.map((e,i) => {
         return (

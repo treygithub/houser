@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Wizard.css';
 import axios from 'axios'
-import Dashboard from '../Dashboard/Dashboard' 
 import { Link } from 'react-router-dom';
 
 
