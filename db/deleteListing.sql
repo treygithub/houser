@@ -1,0 +1,1 @@
+DELETE FROM house WHERE houseid = $1;

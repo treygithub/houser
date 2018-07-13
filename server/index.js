@@ -17,7 +17,7 @@ massive( process.env.CONNECTION_STRING ).then( dbInstance => {
 app.post( '/api/addListing', enterTheMatrix.postNewListing );
 app.get( '/api/fetchListings', enterTheMatrix.getAllListing );
 // app.put( '/api/updateListing/:id', enterTheMatrix.updateListing );
-// app.delete( '/api/deleteListing/:id',enterTheMatrix.handleDelete );
+app.delete( '/api/deleteListing/:id',enterTheMatrix.handleDelete );
 
 const port = 4000
 app.listen( port, () => { console.log(`Coming to you live from port ${port} , the hottest port in town!`);});

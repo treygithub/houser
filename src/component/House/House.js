@@ -1,4 +1,5 @@
 import React from 'react';
+import DeleteBTN from './DeleteBTN'
 
      
     const House = (props) =>{
@@ -12,6 +13,10 @@ import React from 'react';
                 <h4>Listing City:{props.city}</h4>
                 <h4>Listing State:{props.state}</h4>
                 <h4>Listing Zipcode:{props.zipcode}</h4>
+                <DeleteBTN
+                delete1={props.delete1}
+                id={props.id}
+                />
                 <hr />
             </div>)
         }

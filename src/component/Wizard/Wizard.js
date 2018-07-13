@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './Wizard.css';
 import axios from 'axios'
 import Dashboard from '../Dashboard/Dashboard' 
+import { Link } from 'react-router-dom';
+
 
 
 class Wizard extends Component  {
@@ -16,7 +18,7 @@ class Wizard extends Component  {
       }
   
       this.handleChange = this.handleChange.bind(this);
-      //this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleCancel = this.handleCancel.bind(this);
       this.postNewHouse = this.postNewHouse.bind(this);
       //this.getProducts = this.getProducts.bind(this);
     }
@@ -42,6 +44,15 @@ class Wizard extends Component  {
       
     })
   }
+
+  handleCancel() {
+        this.setState({
+          name: "",
+          price: 0,
+          img: ""
+        });
+    
+    }
   
     render() {
       return (
@@ -58,7 +69,7 @@ class Wizard extends Component  {
           <h3>Zipcode:</h3>
           <input name="zipcode" placeholder="Enter Zipcode" onChange={e => this.handleChange(e)} />
           <div className="buttons">
-          {/* <Link to='/'><button onClick={() => this.HandleCancel()}>Cancel</button></Link> */}
+          <Link to='/'><button>Cancel</button></Link>
             <button onClick={() => this.postNewHouse()}>Add to Inventory</button>
           </div>
         </form>

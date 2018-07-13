@@ -15,21 +15,29 @@ class Dashboard extends Component {
       state:'',
       zipcode:0
     }
+    this.handleDeleteProduct=this.handleDeleteProduct.bind(this)
   }    
-    
+    //Life-cycle
     componentDidMount(){
       this.getProducts();
     }
+    //Get
     getProducts(){
       axios.get('/api/fetchListings').then(res => {
         this.setState({
           listing: res.data
         })
-        //console.log(res);
       })
     }
-    
+    //Delete
+    handleDeleteProduct(id) {
+      axios
+        .delete(`/api/deleteListing/${id}`)
+        .then(() => this.getProducts())
+    }
+    //map over state and pass props to child
     render() {
+      let {handleDeleteProduct} = this.props
       let {listing} = this.state
       let instanceLoop  = listing.map((e,i) => {
         return (
@@ -41,9 +49,12 @@ class Dashboard extends Component {
             city={e.city}
             state={e.state}
             zipcode={e.zipcode}
+            delete1={this.handleDeleteProduct}
             />
             
          )})
+
+         //Render iteam to screen + link button to form field
          return (
         <div>
          <div className="dashboard">

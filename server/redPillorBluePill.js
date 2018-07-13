@@ -21,4 +21,18 @@ module.exports = {
             } );
           },
 
+
+          handleDelete: ( req, res, next ) => {
+            const dbInstance = req.app.get('db');
+            const { id } = req.params;
+        
+            dbInstance.deleteListing( [id] )
+              .then( response  => {
+                res.sendStatus(200).json(response )} )
+              .catch( err => {
+                res.status(500).send({err: "Oops! Something went wrong. Our engineers have been informed!"});
+                console.log(err)
+              } );
+          },
+
 }
