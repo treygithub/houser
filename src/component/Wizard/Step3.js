@@ -11,8 +11,7 @@ class Step3 extends Component  {
           mortgage:0,
           rent:0
       }
-  
-    
+
     }
 
     handleMortgage(value) {
@@ -44,15 +43,6 @@ class Step3 extends Component  {
       axios.post("api/addListing", {name, address,city, state, zipcode,image_url,mortgage,rent} )
       }
 
-
-
-
-
-
-
-
-
-  
     render() {
       return (
         <div className="wrapper">
