@@ -1,4 +1,4 @@
-initState = {
+const initState = {
     name: '',
     address:'',
     city:'',
@@ -18,7 +18,7 @@ initState = {
  const UPDATE_RENT = "UPDATE_RENT";
 
 
- export default reducer = (state = initState , action) => {
+ export default function reducer(state = initState , action) {
      switch (action.type) {
          case UPDATE_NAME:
              return {
