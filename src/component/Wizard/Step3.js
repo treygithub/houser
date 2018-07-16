@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { updateMortgage,updateRent } from '../ducks/reducer';
 
 class Step3 extends Component  {
     constructor(props) {
@@ -22,14 +24,14 @@ class Step3 extends Component  {
     }
 
     postNewHouse = () => {
-      let {name, address,city, state, zipcode} = this.state
-      axios.post("api/addListing", {name, address,city, state, zipcode} )
+      let {name, address,city, state, zipcode,image_url,mortgage,rent} = this.state
+      axios.post("api/addListing", {name, address,city, state, zipcode,image_url,mortgage,rent} )
       }
-
-    // postNewHouse = () => {
-    // let {mortgage, rent} = this.state
-    // axios.post("api/addMoney", {mortgage, rent} )
-    // }
+      sendToReducer2() {
+        let { updateMortgage, updateRent } = this.props;
+        updateMortgage(this.state.mortgage);
+        updateRent(this.state.rent);
+      }
   
     render() {
       return (
@@ -41,8 +43,8 @@ class Step3 extends Component  {
           <h3>Desired Monthly Rent: </h3>
           <input value={this.state.rent} name="rent" type="number" placeholder="Enter Amount" onChange={e => this.handleRent(e.target.value)} />
           <div className="buttons">
-          <Link to='/Step2'><button>Go Back</button></Link>
-          <Link to='/'><button>Cancel</button></Link>
+            <Link to='/Step2'><button>Go Back</button></Link>
+            <Link to='/'><button>Cancel</button></Link>
             <button onClick={() => this.postNewHouse()}>Add to Inventory</button>
           </div>
         </form>
@@ -51,4 +53,5 @@ class Step3 extends Component  {
     }
   }
 
-  export default Step3;
+  const mapStateToProps = state => state;
+  export default connect( mapStateToProps, { updateMortgage, updateRent } ) (Step3);

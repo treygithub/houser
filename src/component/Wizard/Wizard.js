@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import './Wizard.css';
-import axios from 'axios'
 import { Link } from 'react-router-dom';
-
+import { connect } from "react-redux";
+import { updateName, updateAddress, updateCity, updateState, updateZipcode } from "../ducks/reducer";
 
 
 class Wizard extends Component  {
@@ -17,15 +17,25 @@ class Wizard extends Component  {
       }
   
       this.handleChange = this.handleChange.bind(this);
+      this.sendToReducer = this.sendToReducer.bind(this);
     }
 
-  
+    sendToReducer() {
+      let { updateName, updateAddress, updateCity, updateState, updateZipcode } = this.props;
+      updateName(this.state.name);
+      updateAddress(this.state.updateAddress);
+      updateCity(this.state.updateCity);
+      updateState(this.state.updateState);
+      updateZipcode(this.state.updateZipcode);
+    }
+
     handleChange(e) {
       this.setState({[e.target.name]: e.target.value})
+      //console.log(this.state)
     }
     
-  
     render() {
+
       return (
         <div className="wrapper">
         <form>
@@ -42,7 +52,7 @@ class Wizard extends Component  {
           <div className="buttons">
           <Link to='/'><button>Cancel</button></Link>
             <Link to='/Step2'><button>Next</button></Link>
-            {/* <button onClick={() => this.postNewHouse()}>Add to Inventory</button> */}
+            <button onClick={() => this.sendToReducer()}>SUBMIT</button>
           </div>
         </form>
         </div>
@@ -50,4 +60,6 @@ class Wizard extends Component  {
     }
   }
 
-  export default Wizard;
+
+const mapStateToProps = state => state;
+export default connect( mapStateToProps, { updateName, updateAddress, updateCity, updateState, updateZipcode } ) (Wizard);

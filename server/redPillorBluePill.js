@@ -2,9 +2,9 @@ module.exports = {
 
   postNewListing: ( req, res ) => {
         const dbInstance = req.app.set('db');
-        const {name, address, city, state, zipcode } = req.body;
+        const {name, address, city, state, zipcode, image_url, mortgage, rent } = req.body;
   
-        dbInstance.newListing([name, address, city, state, zipcode])
+        dbInstance.newListing([name, address, city, state, zipcode, image_url, mortgage, rent])
         .then( payload => {
           res.status(200).json(payload);})
         

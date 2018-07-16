@@ -13,7 +13,10 @@ class Dashboard extends Component {
       address:'',
       city:'',
       state:'',
-      zipcode:0
+      zipcode:0,
+      image_url:'',
+      mortgage:'',
+      rent:''
     }
     this.handleDeleteProduct=this.handleDeleteProduct.bind(this)
   }    
@@ -48,6 +51,9 @@ class Dashboard extends Component {
             city={e.city}
             state={e.state}
             zipcode={e.zipcode}
+            image_url={e.image_url}
+            mortgage={e.mortgage}
+            rent={e.rent}
             delete1={this.handleDeleteProduct}
             />
             

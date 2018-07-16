@@ -8,6 +8,7 @@ const initState = {
     mortgage:'',
     rent:''
 }
+
  const UPDATE_NAME = "UPDATE_NAME";
  const UPDATE_ADDRESS = "UPDATE_ADDRESS";
  const UPDATE_CITY = "UPDATE_CITY";
@@ -18,6 +19,56 @@ const initState = {
  const UPDATE_RENT = "UPDATE_RENT";
 
 
+ export function updateName(newName) {
+        return {
+          type: UPDATE_NAME,
+          payload: newName
+        };
+      }
+      export function updateAddress(newAddress) {
+        return {
+          type: UPDATE_ADDRESS,
+          payload: newAddress
+        };
+      }
+      export function updateCity(newCity) {
+        return {
+          type: UPDATE_CITY,
+          payload: newCity
+        };
+      }
+      export function updateState(newState) {
+        return {
+          type: UPDATE_STATE,
+          payload: newState
+        };
+      }
+      export function updateZipcode(newZipcode) {
+        return {
+          type: UPDATE_ZIPCODE,
+          payload: newZipcode
+        };
+      }
+      export function updateImage_Url(newImage_Url) {
+        return {
+          type: UPDATE_IMAGE_URL,
+          payload: newImage_Url
+        };
+      }export function updateMortgage(newMortgage) {
+        return {
+          type: UPDATE_MORTGAGE,
+          payload: newMortgage
+        };
+      }
+      export function updateRent(newRent) {
+        return {
+          type: UPDATE_RENT,
+          payload: newRent
+        };
+      }
+
+
+      
  export default function reducer(state = initState , action) {
      switch (action.type) {
          case UPDATE_NAME:
