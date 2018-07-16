@@ -23,15 +23,35 @@ class Step3 extends Component  {
       this.setState({rent: value})
     }
 
-    postNewHouse = () => {
-      let {name, address,city, state, zipcode,image_url,mortgage,rent} = this.state
-      axios.post("api/addListing", {name, address,city, state, zipcode,image_url,mortgage,rent} )
-      }
-      sendToReducer2() {
+    // postNewHouse = () => {
+    //   let {name, address,city, state, zipcode,image_url,mortgage,rent} = this.state
+    //   axios.post("api/addListing", {name, address,city, state, zipcode,image_url,mortgage,rent} )
+    //   }
+
+
+    //   sendToReducer2() {
+    //     let { updateMortgage, updateRent } = this.props;
+    //     updateMortgage(this.state.mortgage);
+    //     updateRent(this.state.rent);
+    //   }
+
+
+      sendToReducer2 ()  {
         let { updateMortgage, updateRent } = this.props;
         updateMortgage(this.state.mortgage);
         updateRent(this.state.rent);
+        let {name, address,city, state, zipcode,image_url,mortgage,rent} = this.state
+      axios.post("api/addListing", {name, address,city, state, zipcode,image_url,mortgage,rent} )
       }
+
+
+
+
+
+
+
+
+
   
     render() {
       return (
